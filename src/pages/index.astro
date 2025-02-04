@@ -4,7 +4,7 @@ import AnimeCard from '../components/AnimeCard.svelte';
 let animes = [];
 
 async function fetchAnimes() {
-  const response = await fetch('/api/anime');
+  const response = await fetch('https://anime-api.seirin.icu/api/anime');
   if (!response.ok) throw new Error(response.statusText);
   animes = await response.json();
 }
