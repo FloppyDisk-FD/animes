@@ -7,7 +7,7 @@
   <h2>{anime.title}</h2>
   <p><strong>Duration:</strong> {anime.duration}</p>
   <p><strong>Genre:</strong> {anime.genre}</p>
-  <p><strong>制作信息:</strong> {anime.productionInfo}</p>
+  <p><strong>制作信息:</strong> {anime.productioninfo}</p>
 </div>
 
 <style>
