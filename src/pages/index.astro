@@ -1,11 +1,32 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import AnimeCard from '../components/AnimeCard.svelte';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+let animes = [];
+
+async function fetchAnimes() {
+  const response = await fetch('/api/anime');
+  if (!response.ok) throw new Error(response.statusText);
+  animes = await response.json();
+}
+
+await fetchAnimes();
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime List</title>
+</head>
+<body>
+  <main>
+    <h1>Favorites Anime List</h1>
+    {animes.map((anime) => (
+      <AnimeCard key={anime.id} anime={anime} />
+    ))}
+  </main>
+</body>
+</html>
+
+
+
